@@ -11,4 +11,6 @@ if __name__ == '__main__':
     main = raw_input("What would you like for main course ?")
     print "So, you want %s for starters and %s for the main course." % (starter, main)
     print "Thank you very much for your order."
-    
+    dessert = raw_input("What would you like for dessert?")
+    print "So, you would like to have some %s for dessert." % (dessert)
+    print "Thank you very much to coming to our restaurant. Have a nice day ahead !"
