@@ -1,8 +1,8 @@
 Boolean Operators
 =================
 
-And                        Or                           Not
-==============================================================================                       
+ And                       | Or                         |  Not
+-------------------------- | -------------------------- |  --------------------                     
 * True and True is True    | * True or True is True     | * Not True is False
 * True and False is False  | * True or False is True    | * Not False is True
 * False and True is False  | * False or True is True    | 
