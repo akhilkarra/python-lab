@@ -5,9 +5,9 @@ Well done! However, now we have the first letter showing up both at the beginnin
 
 s = "Charlie"
 
-print s[0]  (will print "C")
+print s(0)  (will print "C")
 
-print s[1:4] (will print "har")
+print s(1:4) (will print "har")
 
 * First we create a variable s and give it the string "Charlie"
 * Next we access the first letter of "Charlie" using s[0]. Remember letter positions start at 0.
