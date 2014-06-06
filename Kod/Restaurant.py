@@ -33,4 +33,4 @@ else:
    print 240 + 4000
    print "Rs/-"  
 
-print "Thank you for visiting our restaurant. Hope you come again!"
+print "Thank you for visiting our restaurant. Hope you come again!ss
