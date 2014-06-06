@@ -16,18 +16,21 @@ if dessert == "Nothing":
 else:
    print "Ok, so you would like %s for your dessert." % (dessert)
 
-
-starter_price = "90 Rs/-"
-main_price = "4,000 Rs/-"
-dessert_price = "100 Rs/-"
-
 if starter == "Nothing" and dessert != "Nothing":
-   print ("main_price  +  dessert_price")
+   print "Price:"
+   print 4000  + 100 
+   print "Rs/-"
 elif starter and dessert != "Nothing":
-   print ("starter_price  +  main_price  +  dessert_price")
+   print "Price:"
+   print 4000 + 100  + 240 
+   print "Rs/-"
 elif starter and dessert == "Nothing":
-   print main_price  
+   print "Price:"
+   print 4000 
+   print "Rs/-"  
 else:
-   print ("starter_price"  +  "main_price")
+   print "Price:"
+   print 240 + 4000
+   print "Rs/-"  
 
 print "Thank you for visiting our restaurant. Hope you come again!"
