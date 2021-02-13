@@ -1,4 +1,4 @@
-from aops.lib import InvalidNumberError, flip4digit
+from aops.lib import InvalidNumberError, flip_4_digit
 import pytest
 
 
@@ -7,7 +7,7 @@ import pytest
     [(1728, 8271), (2400, 42), (2004, 4002), (1000, 1), (9999, 9999)],
 )
 def test_flip_4_digit(n: int, expected: int) -> None:
-    assert flip4digit(n) == expected
+    assert flip_4_digit(n) == expected
 
 
 @pytest.mark.parametrize(
@@ -16,4 +16,4 @@ def test_flip_4_digit(n: int, expected: int) -> None:
 )
 def test_invalid_flip_4_digits(n: int) -> None:
     with pytest.raises(InvalidNumberError):
-        flip4digit(n)
+        flip_4_digit(n)
