@@ -12,3 +12,6 @@ dist
 .pytest_cache
 .mypy_cache
 build
+.DS_Store
+*.iml
+bin

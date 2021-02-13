@@ -8,3 +8,6 @@ colorama==0.4.4
     # via -r requirements.in
 exitstatus==2.1.0
     # via -r requirements.in
+
+pip~=20.2.3
+setuptools~=49.2.1
