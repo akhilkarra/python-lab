@@ -1,4 +1,4 @@
-from aops.lib import InvalidNumberError, flip_4_digit
+from aops.week2 import InvalidNumberError, flip_4_digit
 import pytest
 
 
