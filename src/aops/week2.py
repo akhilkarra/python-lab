@@ -1,7 +1,13 @@
+# Python Class 2748
+# Week 2
+# Author: Akhil Karra
+
+
 class InvalidNumberError(RuntimeError):
     """Error generated if input given is not a 4-digit positive integer."""
 
 
+# Problem 6
 def flip_4_digit(n: int) -> int:
     """Flip the digits of a 4-digit positive integer
 
