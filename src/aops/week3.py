@@ -35,10 +35,6 @@ def factorial(n: int) -> int:
         return product
 
 
-# Answer to Problem 2
-print(factorial(16))
-
-
 # Problem 4
 def fibonacci(n: int) -> int:
     """Compute the nth Fibonacci number.
