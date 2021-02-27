@@ -2,6 +2,7 @@ import pytest
 from src.aops.week4 import (
     InvalidNonnegativeIntegerError,
     OutOfBoundsError,
+    compute_mongo_age,
     convert_to_celsius,
     convert_to_fahrenheit,
     convert_to_seconds,
@@ -56,3 +57,23 @@ def test_convert_to_fahrenheit(celsius: float, expected: float) -> None:
 )
 def test_letter_square(letter: str, size: int, expected: str) -> None:
     assert letter_square(letter, size) == expected
+
+
+# Test compute_mongo_age using test case in problem statement
+@pytest.mark.parametrize(
+    "birthyear, birthmonth, birthday, currentyear, currentmonth, currentday, expected",
+    {(2879, 8, 11, 2892, 2, 21, 12.625641025641025)},
+)
+def test_compute_mongo_age(
+    birthyear: int,
+    birthmonth: int,
+    birthday: int,
+    currentyear: int,
+    currentmonth: int,
+    currentday: int,
+    expected: float,
+) -> None:
+    assert (
+        compute_mongo_age(birthyear, birthmonth, birthday, currentyear, currentmonth, currentday)
+        == expected
+    )

@@ -100,3 +100,53 @@ def letter_square(letter: str, size: int) -> str:
             square += size * letter + "\n"  # Create the line of letters and add a new line
 
         return square  # Return the completed square string
+
+
+# Problem 7
+def compute_mongo_age(
+    birthyear: int,
+    birthmonth: int,
+    birthday: int,
+    currentyear: int,
+    currentmonth: int,
+    currentday: int,
+) -> float:
+    """Create square of a specified character
+
+    Args:
+        birthyear: an integer
+        birthmonth: an integer between 1 and 15 inclusive
+        birthday: an integer between 1 and 26 inclusive
+
+        currentyear: an integer
+        currentmonth: an integer between 1 and 15 inclusive
+        currentday: an integer between 1 and 26 inclusive
+
+    Raises:
+        InvalidPositiveIntegerError: if any of the of the values are less than or equal to 0
+        OutOfBoundsError: if any of the of the values are out of the expected bounds
+
+    Returns:
+        The decimal approximation of the age of a resident of Mongo
+    """
+    if (
+        birthyear <= 0
+        or birthmonth <= 0
+        or birthday <= 0
+        or currentyear <= 0
+        or currentmonth <= 0
+        or currentday <= 0
+    ):
+        raise InvalidPositiveIntegerError("All of the inputs must be less than or equal to 0.")
+    elif birthmonth > 15 or birthday > 26 or currentmonth > 15 or currentday > 26:
+        raise OutOfBoundsError(
+            "Months should be between 1 and 15 and days should be between 1 and 26."
+        )
+    else:
+        return (
+            (currentyear - birthyear)
+            + ((currentmonth - birthmonth) / 15)  # Calculate years
+            + (  # Calculate months, make into decimal, and add to sum
+                (currentday - birthday) / (26 * 15)
+            )  # Calculate days, make into decimal, and add to sum
+        )
