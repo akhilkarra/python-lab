@@ -2,6 +2,7 @@
 # Week 5
 # Author: Akhil Karra
 
+
 class InvalidNonnegativeIntegerError(RuntimeError):
     """Error generated if input given is not a nonnegative integer."""
 
@@ -19,7 +20,7 @@ class OutOfBoundsError(RuntimeError):
 
 
 class InvalidTriangleError(RuntimeError):
-    """Error generated if the numbers given do not correspond to a triangle as per the Triangle Inequality"""
+    """Error generated if inputs do not correspond to a triangle as per the Triangle Inequality"""
 
 
 # Problem 3
@@ -27,7 +28,7 @@ def assign_letter_grade(score: int) -> str:
     """Assign a linear letter grade to a given percentage score
 
     Args:
-        :param score: a nonnegative integer from 0-100 that is the percentage score given by the user
+        :param score: nonnegative integer from 0-100 that is the percentage score given by the user
 
     Raises:
         InvalidNonnegativeIntegerError: If input given is not a nonnegative integer.
@@ -37,7 +38,7 @@ def assign_letter_grade(score: int) -> str:
         The letter grade as a string.
     """
     if score < 0:
-        raise InvalidNonnegativeIntegerError  # Make sure score given is actually a nonnegative integer
+        raise InvalidNonnegativeIntegerError  # Make sure score is actually a nonnegative integer
     elif score > 100:
         raise OutOfBoundsError  # Make sure score given is not beyond 100
     else:
@@ -71,13 +72,13 @@ def is_right_triangle(a: int, b: int, c: int) -> bool:
         :param c: an integer corresponding to a side in a triangle
 
     Raises:
-        InvalidTriangleError: If three numbers given do not correspond to sides of a triangle by the Triangle Inequality
+        InvalidTriangleError: If numbers do not correspond to a triangle by the Triangle Inequality
 
     Returns:
-        True or False depending on whether the three numbers correspond to the sides of a right triangle
+        True / False based on whether the three numbers correspond to the sides of a right triangle
     """
     if c >= (a + b) or b >= (a + c) or a >= (b + c):
-        raise InvalidTriangleError  # Make sure inputs actually correspond to sides on a real triangle
+        raise InvalidTriangleError  # Make sure inputs correspond to sides on a real triangle
     else:
         if a > b and a > c:
             return b * b + c * c == a * a  # Condition if a is the largest side
@@ -88,9 +89,9 @@ def is_right_triangle(a: int, b: int, c: int) -> bool:
 
 
 # Problem 6
-def q1_1960_IMO() -> list:
-    """Returns the two three-digit numbers n such that n is divisible by 11 and (n / 11) is equal to the sum of the
-    squares of the digits of n.
+def q1_1960_imo() -> list[int]:
+    """Returns the two three-digit numbers n such that n is divisible by 11 and (n / 11) is equal
+    to the sum of the squares of the digits of n.
 
     Args:
         None.
@@ -129,13 +130,13 @@ def sum_of_proper_divs(n: int) -> int:
     elif n == 1:
         raise InputOneError  # Make sure that n is not equal to 1
     else:
-        sumOfDivisors = 0  # Make a variable for the sum
+        sum_of_divisors = 0  # Make a variable for the sum
 
         for i in range(1, n):  # For all integers between 1 and n-1 inclusive,
             if n % i == 0:  # If i is a divisor of n,
-                sumOfDivisors += i  # Add i to the sum
+                sum_of_divisors += i  # Add i to the sum
 
-        return sumOfDivisors  # Give the sum of proper divisors
+        return sum_of_divisors  # Give the sum of proper divisors
 
 
 # Problem 7 Part (b). ii.
@@ -151,9 +152,13 @@ def find_three_digit_perfect_number() -> int:
     Returns:
         The three digit perfect integer.
     """
+    answer = 0  # Make a variable for the answer
+
     for n in range(100, 1000):  # Define n to be a three digit number
         if sum_of_proper_divs(n) == n:  # If the single three-digit perfect integer is found,
-            return n  # Stop immediately and give the number!
+            answer = n  # This is the number!
+
+    return answer
 
 
 # Problem 8 (challenge time!)
@@ -169,19 +174,23 @@ def find_other_taxicab_number() -> int:
     Returns:
         The other taxicab number.
     """
-    listOfSumsOfCubes = []  # Create an initial list
+    list_of_sums_of_cubes = []  # Create an initial list
 
     for x in range(1, 23):  # The first 5-digit cube is 22**3 = 10648
         for y in range(1, x + 1):  # Same reasoning as above; We want every single 4 digit sum
-            if 1000 <= (x ** 3 + y ** 3) < 10000:  # If the sum of the cubes is a four digit number,
-                listOfSumsOfCubes.append(x ** 3 + y ** 3)  # Add it to the list
+            if (
+                1000 <= (x ** 3 + y ** 3) < 10000
+            ):  # If the sum of the cubes is a four digit number,
+                list_of_sums_of_cubes.append(x ** 3 + y ** 3)  # Add it to the list
 
-    listOfSumsOfCubes.sort()  # Sort in increasing order
+    list_of_sums_of_cubes.sort()  # Sort in increasing order
 
-    listOfTaxicabs = []  # Create a new list for the 4-digit taxicab numbers
+    list_of_taxicabs = []  # Create a new list for the 4-digit taxicab numbers
 
-    for i in range(len(listOfSumsOfCubes)):  # Go through each sum of cubes
-        if listOfSumsOfCubes[i] == listOfSumsOfCubes[i - 1]:  # If two identical sums of cubes are found,
-            listOfTaxicabs.append(listOfSumsOfCubes[i])  # Add it as a taxicab number!
+    for i in range(len(list_of_sums_of_cubes)):  # Go through each sum of cubes
+        if (
+            list_of_sums_of_cubes[i] == list_of_sums_of_cubes[i - 1]
+        ):  # If two identical sums of cubes are found,
+            list_of_taxicabs.append(list_of_sums_of_cubes[i])  # Add it as a taxicab number!
 
-    return listOfTaxicabs[1]  # Return the second 4-digit taxicab number
+    return list_of_taxicabs[1]  # Return the second 4-digit taxicab number
