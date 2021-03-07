@@ -2,6 +2,8 @@
 # Week 5
 # Author: Akhil Karra
 
+import typing
+
 
 class InvalidNonnegativeIntegerError(RuntimeError):
     """Error generated if input given is not a nonnegative integer."""
@@ -89,7 +91,7 @@ def is_right_triangle(a: int, b: int, c: int) -> bool:
 
 
 # Problem 6
-def q1_1960_imo() -> list[int]:
+def q1_1960_imo() -> typing.List[int]:
     """Returns the two three-digit numbers n such that n is divisible by 11 and (n / 11) is equal
     to the sum of the squares of the digits of n.
 

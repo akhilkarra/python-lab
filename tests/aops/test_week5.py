@@ -1,3 +1,5 @@
+import typing
+
 import pytest
 from src.aops.week5 import (
     InputOneError,
@@ -73,7 +75,7 @@ def test_irt_invalid_triangle_error(a: int, b: int, c: int) -> None:
 
 # Test q1_1960_IMO()
 @pytest.mark.parametrize("expected", [[550, 803]])
-def test_q1_1960_imo(expected: list[int]) -> None:
+def test_q1_1960_imo(expected: typing.List[int]) -> None:
     assert q1_1960_imo() == expected
 
 
