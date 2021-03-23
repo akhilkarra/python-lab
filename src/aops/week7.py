@@ -2,13 +2,15 @@
 # Week 7
 # Author: rt24-p (536532)
 
+import typing
+
 
 class InvalidCharError(RuntimeError):
     """Error given if input is not a single character"""
 
 
 # Function to make a list of non-space characters from a string
-def string_to_non_space_characters(string: str) -> list[str]:
+def string_to_non_space_characters(string: str) -> typing.List[str]:
     """
     Returns a list of non-space characters found in string
 
@@ -27,7 +29,7 @@ def string_to_non_space_characters(string: str) -> list[str]:
 
 
 # Function to make a list of all characters from a string
-def string_to_characters(string: str) -> list[str]:
+def string_to_characters(string: str) -> typing.List[str]:
     """
     Returns a list of all characters found in string
 
