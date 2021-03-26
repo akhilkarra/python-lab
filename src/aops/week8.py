@@ -3,6 +3,7 @@
 # Author: rt24-p (536532)
 
 import random
+import typing
 
 
 class InvalidListLengthError(RuntimeError):
@@ -14,7 +15,7 @@ class InvalidListError(RuntimeError):
 
 
 # Problem 1
-def list_add(list1: list[int], list2: list[int]) -> list[int]:
+def list_add(list1: typing.List[int], list2: typing.List[int]) -> typing.List[int]:
     """
     Returns a new list whose entries are the sum of the entries of list1 and list2
 
@@ -32,7 +33,7 @@ def list_add(list1: list[int], list2: list[int]) -> list[int]:
         print("The lists you have entered are not the same length. Please try again.")
         raise InvalidListLengthError()  # Raise the invalid list length error
     else:
-        added_list = []  # Create a new integer for the added list
+        added_list: typing.List[int] = []  # Create a new integer for the added list
 
         for i in range(len(list1)):  # For each integer in the lists:
             added_list.append(list1[i] + list2[i])  # Add the corresponding numbers and insert them
@@ -41,7 +42,7 @@ def list_add(list1: list[int], list2: list[int]) -> list[int]:
 
 
 # Problem 3a
-def print_board(ttt_list: list[str]) -> None:
+def print_board(ttt_list: typing.List[str]) -> None:
     """
     Prints a tic-tac-toe board corresponding to tttList
 
@@ -69,7 +70,7 @@ def print_board(ttt_list: list[str]) -> None:
 
 
 # Problem 3b
-def find_winner(ttt_list: list[str]) -> str:
+def find_winner(ttt_list: typing.List[str]) -> str:
     """
     Returns the winner (either 'X' or 'O') of the tic-tac-toe game represented by ttt_list, or 'No
     winner' if neither 'X' nor 'O' has won.
@@ -116,7 +117,7 @@ def find_winner(ttt_list: list[str]) -> str:
 
 
 # Problem 4
-def is_jolly(in_list: list[int]) -> bool:
+def is_jolly(in_list: typing.List[int]) -> bool:
     """
      Returns True if the input argument is a jolly jumper sequence and False otherwise
 
