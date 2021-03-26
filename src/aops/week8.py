@@ -155,13 +155,13 @@ def simulation_1000_dice_rolls() -> str:
     Returns:
         A string with a frequency table of each possible roll
     """
-    rolls = tuple[int]()  # Create a tuple for every single roll
+    rolls: typing.List[int] = []  # Create a tuple for every single roll
 
     for i in range(1000):  # For 1000 times:
         dice1 = random.randint(1, 6)  # Roll the first dice
-        dice2 = random.randint(1, 6)  # Roll the second dice
+        dice2 = random.randint(1, 6)  # Roll the second dicem]
 
-        rolls += (dice1 + dice2,)  # Add the sum of the rolls to the rolls tuple
+        rolls.append(dice1 + dice2)  # Add the sum of die to the rolls tuple
 
     frequency_table = "Roll \tNumber \n---- \t------"  # Create the frequency table
 
