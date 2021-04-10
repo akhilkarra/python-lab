@@ -121,3 +121,41 @@ def highest_scoring_scrabble_word(wordlist_path: str) -> str:
     wordlist.close()  # Close the wordlist file
 
     return highest_score[1]  # Return the highest scoring Scrabble word
+
+
+# Problem 5
+def count_letters(input_string: str) -> str:
+    """
+    Returns alphabetized letter count of letters in input_string, ignoring case
+
+    Args:
+        :param input_string: The string to analyze
+
+    Raises:
+        None.
+
+    Returns:
+        A string with each line giving a letter in input_string and its frequency in alphabetical
+        order.
+    """
+    input_string = input_string.lower().replace(" ", "")  # Lowercase input, remove all spaces
+    for punctuation in ".,;?!":  # For all punctuation marks:
+        if punctuation in input_string:  # If the input string contains this punctuation mark:
+            input_string = input_string.replace(punctuation, "")  # Delete all instances of it
+
+    letters: typing.Dict[str, int] = {}  # Create a dictionary to hold a count of all letters
+    letter_count = ""  # Create an empty string to hold the letter count in string form
+
+    for letter in input_string:  # For letter in the processed input string
+        if letter in letters:  # If the letter is already in the letters dictionary
+            letters[letter] += 1  # Increment the counter for that letter
+        else:  # Otherwise
+            letters[letter] = 1  # Create a new entry in the dictionary with frequency 1
+
+    letters_keys_list = list(letters.keys())  # Create a list of all the keys of letters
+    letters_keys_list.sort()  # Sort this list in alphabetical order
+
+    for letter in letters_keys_list:  # For each letter in the alphabetical list of letters' keys:
+        letter_count += letter + ": " + str(letters[letter]) + "\n"  # Put the count in the string
+
+    return letter_count  # Return the letter count string
