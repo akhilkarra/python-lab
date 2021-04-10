@@ -1,3 +1,5 @@
+import typing
+
 import pytest
 from src.aops.week10 import dict_reverse, highest_scoring_scrabble_word, student_averages
 
@@ -7,7 +9,7 @@ from src.aops.week10 import dict_reverse, highest_scoring_scrabble_word, student
     "input_dict, expected",
     [({"adam": 80, "betty": 60, "charles": 50}, {80: "adam", 60: "betty", 50: "charles"})],
 )
-def test_dict_reverse(input_dict: dict[str, int], expected: dict[int, str]) -> None:
+def test_dict_reverse(input_dict: typing.Dict[str, int], expected: typing.Dict[int, str]) -> None:
     assert dict_reverse(input_dict) == expected
 
 
@@ -28,7 +30,7 @@ def test_dict_reverse(input_dict: dict[str, int], expected: dict[int, str]) -> N
         )
     ],
 )
-def test_student_averages(grades_txt_filepath: str, expected: dict[str, int]) -> None:
+def test_student_averages(grades_txt_filepath: str, expected: typing.Dict[str, int]) -> None:
     assert student_averages(grades_txt_filepath) == expected
 
 

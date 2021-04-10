@@ -6,7 +6,7 @@ import typing
 
 
 # Problem 2
-def dict_reverse(input_dict: dict[str, int]) -> dict[int, str]:
+def dict_reverse(input_dict: typing.Dict[str, int]) -> typing.Dict[int, str]:
     """
     Returns dict with keys/values of inputDict swapped
 
@@ -28,7 +28,7 @@ def dict_reverse(input_dict: dict[str, int]) -> dict[int, str]:
 
 
 # Problem 3
-def student_averages(grades_txt_filepath: str) -> dict[str, float]:
+def student_averages(grades_txt_filepath: str) -> typing.Dict[str, float]:
     """
     Reads in the data from grades.txt, and then returns each student's name and average score.
 
@@ -41,7 +41,7 @@ def student_averages(grades_txt_filepath: str) -> dict[str, float]:
     Returns:
         A dictionary with each student's name and their average score
     """
-    tally: dict[str, list[float]] = {}  # Create dictionary to hold names, total, number of tests
+    tally: typing.Dict[str, list[float]] = {}  # Create dict to hold names, total, number of tests
 
     grades_file = open(grades_txt_filepath, "r")  # Open the grades.txt file to read
 
@@ -54,7 +54,7 @@ def student_averages(grades_txt_filepath: str) -> dict[str, float]:
 
     grades_file.close()  # Close the grades.txt file
 
-    average_scores: dict[str, float] = {}  # Create the output dictionary
+    average_scores: typing.Dict[str, float] = {}  # Create the output dictionary
 
     for student in tally:  # For each student in the tally:
         average_scores[student] = tally[student][0] / tally[student][1]
