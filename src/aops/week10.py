@@ -41,7 +41,7 @@ def student_averages(grades_txt_filepath: str) -> typing.Dict[str, float]:
     Returns:
         A dictionary with each student's name and their average score
     """
-    tally: typing.Dict[str, list[float]] = {}  # Create dict to hold names, total, number of tests
+    tally: typing.Dict[str, typing.List[float]] = {}  # Create dict to hold names, total, tests
 
     grades_file = open(grades_txt_filepath, "r")  # Open the grades.txt file to read
 
