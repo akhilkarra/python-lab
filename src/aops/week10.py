@@ -159,3 +159,94 @@ def count_letters(input_string: str) -> str:
         letter_count += letter + ": " + str(letters[letter]) + "\n"  # Put the count in the string
 
     return letter_count  # Return the letter count string
+
+
+# Problem 6
+def replace_word(input_string: str, old_word: str, new_word: str) -> str:
+    """
+    Returns string such that old_word is replaced with new_word in input_string
+
+    Args:
+        :param input_string: The string to process
+        :param old_word: The word to find all occurrences in the file
+        :param new_word: The word to replace all occurrences old_word
+
+    Raises:
+        None.
+
+    Returns:
+        A string of all the text in input_string such that every instance of old_word is replaced
+        with new_word
+    """
+    words = input_string.split()  # Split the input up into individual words
+
+    for i, word in enumerate(words):  # Given the index and word in the words list:
+        if word == old_word:  # Check for old_word without punctuation:
+            words[i] = new_word  # Replace old_word with new_word
+
+    for punctuation in ",.!?/":  # Given all possible punctuation marks:
+        for i, word in enumerate(words):  # Given the index and word in the words list:
+            if word == old_word + punctuation:  # Check for old_word with punctuation
+                words[i] = new_word + punctuation  # Replace old_word with new_word
+
+    return " ".join(words) + "\n"  # Join the list of words together and return this
+
+
+def translation_dictionary(dict_file_name: str, separator: str) -> typing.Dict[str, str]:
+    """
+    Reads a dictionary file and returns a dictionary containing the original word as the key and
+    the translated word as the value. The dictionary file is made such that each line contains the
+    original and translated words separated by the character specified as the separator
+
+    Args:
+        :param dict_file_name: The path to the dictionary file
+        :param separator: The separator that separates the original and translated words in the
+        dictionary file
+
+    Raises:
+        None.
+
+    Returns:
+        A dictionary such that the key is the original word
+    """
+    reference: typing.Dict[str, str] = {}  # Create a reference dictionary for translation
+
+    dict_file = open(dict_file_name, "r")  # Open the dictionary file
+
+    for line in dict_file:  # For each line in the dictionary file:
+        words = line.strip("\n").split(separator)  # Split the line into a list of two words
+        reference[words[0]] = words[1]  # Make an entry with {original: translation}
+
+    dict_file.close()  # Close the dictionary file
+
+    return reference  # Return the reference list
+
+
+def translator(dict_file_name: str, text_file_name: str) -> str:
+    """
+    Changes words in input file according to the dictionary file and returns translation in a
+    string
+
+    Args:
+        :param dict_file_name: The name of the dictionary file
+        :param text_file_name: The name of the input text file
+
+    Raises:
+        None.
+
+    Returns:
+        A string containing the full translation of the input file
+    """
+    eng_to_pirate = translation_dictionary(dict_file_name, "|")  # Create a translation dictionary
+    translation = ""  # Create a variable for the end translation in a string
+
+    original_text = open(text_file_name, "r")  # Open the original text to read
+
+    for line in original_text:  # For each line in the original text:
+        for original in eng_to_pirate:  # For each of the original words in the dictionary:
+            line = replace_word(line.lower(), original, eng_to_pirate[original])  # Translate!
+        translation += line  # Add it to the translation string
+
+    original_text.close()  # Close the original text
+
+    return translation.strip("\n")  # Return the translation as a string

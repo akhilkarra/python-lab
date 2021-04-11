@@ -6,6 +6,8 @@ from src.aops.week10 import (
     dict_reverse,
     highest_scoring_scrabble_word,
     student_averages,
+    translation_dictionary,
+    translator,
 )
 
 
@@ -77,3 +79,42 @@ y: 1
 )
 def test_count_letters(input_string: str, expected: str) -> None:
     assert count_letters(input_string) == expected
+
+
+# Test translation_dictionary
+@pytest.mark.parametrize(
+    "dict_file_name, separator, expected",
+    [
+        (
+            "tests/aops/test_files/pirateWords.txt",
+            "|",
+            {
+                "hello": "avast",
+                "money": "filthy lucre",
+                "you": "ye",
+                "your": "ye",
+                "steal": "swipe",
+            },
+        )
+    ],
+)
+def test_translation_dictionary(
+    dict_file_name: str, separator: str, expected: typing.Dict[str, str]
+) -> None:
+    assert translation_dictionary(dict_file_name, separator) == expected
+
+
+# Test translator using given test case
+@pytest.mark.parametrize(
+    "dict_file_name, text_file_name, expected",
+    {
+        (
+            "tests/aops/test_files/pirateWords.txt",
+            "tests/aops/test_files/myInput.txt",
+            """avast i have come to swipe ye filthy lucre
+ye filthy lucre or ye life""",
+        )
+    },
+)
+def test_translator(dict_file_name: str, text_file_name: str, expected: str) -> None:
+    assert translator(dict_file_name, text_file_name) == expected
