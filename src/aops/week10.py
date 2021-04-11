@@ -189,7 +189,7 @@ def replace_word(input_string: str, old_word: str, new_word: str) -> str:
             if word == old_word + punctuation:  # Check for old_word with punctuation
                 words[i] = new_word + punctuation  # Replace old_word with new_word
 
-    return " ".join(words) + "\n"  # Join the list of words together and return this
+    return " ".join(words)  # Join the list of words together and return this
 
 
 def translation_dictionary(dict_file_name: str, separator: str) -> typing.Dict[str, str]:
@@ -245,7 +245,7 @@ def translator(dict_file_name: str, text_file_name: str) -> str:
     for line in original_text:  # For each line in the original text:
         for original in eng_to_pirate:  # For each of the original words in the dictionary:
             line = replace_word(line.lower(), original, eng_to_pirate[original])  # Translate!
-        translation += line  # Add it to the translation string
+        translation += line + "\n"  # Add it to the translation string
 
     original_text.close()  # Close the original text
 

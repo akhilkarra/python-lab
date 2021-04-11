@@ -5,6 +5,7 @@ from src.aops.week10 import (
     count_letters,
     dict_reverse,
     highest_scoring_scrabble_word,
+    replace_word,
     student_averages,
     translation_dictionary,
     translator,
@@ -79,6 +80,30 @@ y: 1
 )
 def test_count_letters(input_string: str, expected: str) -> None:
     assert count_letters(input_string) == expected
+
+
+# Test replace_word with given test case
+@pytest.mark.parametrize(
+    "input_string, old_word, new_word, expected",
+    {
+        (
+            """It was Toto that made Dorothy laugh, and saved her from growing as gray as
+her other surroundings. Toto was not gray; he was a little black dog, with
+long silky hair and small black eyes that twinkled merrily on either side
+of his funny, wee nose. Toto played all day long, and Dorothy played with
+him, and loved him dearly.""",
+            "Toto",
+            "Gizmo",
+            "It was Gizmo that made Dorothy laugh, and saved her from growing as gray as "
+            "her other surroundings. Gizmo was not gray; he was a little black dog, with "
+            "long silky hair and small black eyes that twinkled merrily on either side of "
+            "his funny, wee nose. Gizmo played all day long, and Dorothy played with him, "
+            "and loved him dearly.",
+        )
+    },
+)
+def test_replace_word(input_string: str, old_word: str, new_word: str, expected: str) -> None:
+    assert replace_word(input_string, old_word, new_word) == expected
 
 
 # Test translation_dictionary
