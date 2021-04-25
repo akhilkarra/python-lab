@@ -3,6 +3,7 @@
 # Author: Akhil Karra
 
 from time import sleep
+from typing import Dict, Tuple
 
 
 class ColumnFullError(RuntimeError):
@@ -10,7 +11,7 @@ class ColumnFullError(RuntimeError):
 
 
 # Function to gather player data --> DONE!
-def get_player_data() -> tuple[tuple[str, str], tuple[str, str]]:
+def get_player_data() -> Tuple[Tuple[str, str], Tuple[str, str]]:
     """
     Gets the names of the players playing Connect Four and whether they have the X
     checker or the O checker
@@ -33,7 +34,7 @@ def get_player_data() -> tuple[tuple[str, str], tuple[str, str]]:
 
 
 # Function to create the Connect-4 board --> DONE!
-def create_board() -> dict[tuple[int, int], str]:
+def create_board() -> Dict[Tuple[int, int], str]:
     """
     Create a dictionary that corresponds to a Connect Four board
 
@@ -48,7 +49,7 @@ def create_board() -> dict[tuple[int, int], str]:
         left to right) and row (from the bottom up) of the space and a value "." denoting an empty
         space
     """
-    board: dict[tuple[int, int], str] = {}  # Create the board dictionary
+    board: Dict[Tuple[int, int], str] = {}  # Create the board dictionary
 
     for column in range(0, 7):  # For each column:
         for row in range(0, 7):  # And each row:
@@ -58,7 +59,7 @@ def create_board() -> dict[tuple[int, int], str]:
 
 
 # Function to print a given Connect Four board dictionary --> DONE!
-def print_board(board: dict[tuple[int, int], str]) -> None:
+def print_board(board: Dict[Tuple[int, int], str]) -> None:
     """
     Print the given Connect Four board to the console.
 
@@ -90,8 +91,8 @@ def print_board(board: dict[tuple[int, int], str]) -> None:
 
 # Function to drop checkers and update board --> DONE!
 def drop_checkers(
-    board: dict[tuple[int, int], str], column: int, checker: str
-) -> dict[tuple[int, int], str]:
+    board: Dict[Tuple[int, int], str], column: int, checker: str
+) -> Dict[Tuple[int, int], str]:
     """
     Simulates dropping a checker in a Connect Four board
     Args:
@@ -120,7 +121,7 @@ def drop_checkers(
 
 
 # Function to check for horizontal four-in-a-rows
-def check_horizontals(board: dict[tuple[int, int], str]) -> tuple[bool, str]:
+def check_horizontals(board: Dict[Tuple[int, int], str]) -> Tuple[bool, str]:
     """
     Checks for horizontal four-in-a-rows in a Connect Four board dictionary.
 
@@ -149,7 +150,7 @@ def check_horizontals(board: dict[tuple[int, int], str]) -> tuple[bool, str]:
 
 
 # Function to check for vertical four-in-a-rows
-def check_verticals(board: dict[tuple[int, int], str]) -> tuple[bool, str]:
+def check_verticals(board: Dict[Tuple[int, int], str]) -> Tuple[bool, str]:
     """
     Checks for vertical four-in-a-rows in a Connect Four board dictionary.
 
@@ -178,7 +179,7 @@ def check_verticals(board: dict[tuple[int, int], str]) -> tuple[bool, str]:
 
 
 # Function to check for horizontal four-in-a-rows
-def check_diagonals(board: dict[tuple[int, int], str]) -> tuple[bool, str]:
+def check_diagonals(board: Dict[Tuple[int, int], str]) -> Tuple[bool, str]:
     """
 
 

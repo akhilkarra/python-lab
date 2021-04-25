@@ -1,3 +1,5 @@
+from typing import Dict, Tuple
+
 import pytest
 from src.aops.finalproject import create_board
 
@@ -59,5 +61,5 @@ from src.aops.finalproject import create_board
         }
     ],
 )
-def test_create_board(expected: dict[tuple[int, int], str]) -> None:
+def test_create_board(expected: Dict[Tuple[int, int], str]) -> None:
     assert create_board() == expected
