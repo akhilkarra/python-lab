@@ -74,7 +74,7 @@ def print_board(board: Dict[Tuple[int, int], str]) -> None:
         None.
 
     """
-    board_string = ""  # Create a string representing the board
+    board_string = "\n"  # Create a string representing the board, with a newline at the beginning
 
     for column in range(0, 7):  # For each column number:
         board_string += str(column) + "  "  # Add the column numbers
@@ -103,11 +103,15 @@ def drop_checkers(
 
     Raises:
         ColumnFullError: Raised if the column specified is full
+        ValueError: Raised if the column entered is not between 0 and 6 inclusive
 
     Returns:
         The board dictionary with the checker placed in the designated column
     """
     row = 0  # Start on the bottommost row
+
+    if column not in range(0, 7):  # If the column entered is not within the boundaries:
+        raise ValueError  # Raise the appropriate runtime error
 
     try:  # Try to:
         while board[(column, row)] != ".":
@@ -143,7 +147,9 @@ def check_horizontals(board: Dict[Tuple[int, int], str]) -> Tuple[bool, str]:
                 == board[(column + 1, row)]
                 == board[(column + 2, row)]
                 == board[(column + 3, row)]
-            ):  # If there is a horizontal four-in-a-row:
+            ) and board[
+                (column, row)
+            ] != ".":  # If there is a horizontal four-in-a-row:
                 return True, board[(column, row)]  # Say so and give the winning checker
 
     return False, ""  # Otherwise, report False and give an empty string
@@ -172,7 +178,9 @@ def check_verticals(board: Dict[Tuple[int, int], str]) -> Tuple[bool, str]:
                 == board[(column, row + 1)]
                 == board[(column, row + 2)]
                 == board[(column, row + 3)]
-            ):  # If there is a vertical four-in-a-row:
+            ) and board[
+                (column, row)
+            ] != ".":  # If there is a vertical four-in-a-row:
                 return True, board[(column, row)]  # Say so and give the winning checker
 
     return False, ""  # Otherwise, report False and give an empty string
@@ -181,18 +189,46 @@ def check_verticals(board: Dict[Tuple[int, int], str]) -> Tuple[bool, str]:
 # Function to check for horizontal four-in-a-rows
 def check_diagonals(board: Dict[Tuple[int, int], str]) -> Tuple[bool, str]:
     """
-
+    Checks for vertical four-in-a-rows in a Connect Four board dictionary.
 
     Args:
-
+        board: A 36-entry dictionary with entries of the form {(a,b): "C"} corresponding to a
+        Connect Four board
 
     Raises:
-
+        None.
 
     Returns:
-
+        A tuple of a bool and a string, in the form (bool, "A"), where "A" represents the checker
+        that lies four-in-a-row vertically, i.e., the winning checker
     """
-    return False, f"{str(board)}"
+    # UP-FACING DIAGONALS
+    for row in range(0, 4):  # For rows 0 through 3 inclusive:
+        for column in range(0, 4):  # And for columns 0 through 3 inclusive:
+            if (
+                board[(column, row)]
+                == board[(column + 1, row + 1)]
+                == board[(column + 2, row + 2)]
+                == board[(column + 3, row + 3)]
+            ) and board[
+                (column, row)
+            ] != ".":  # If there is an up-facing diagonal four-in-a-row:
+                return True, board[(column, row)]  # Say so and give the winning checker
+
+    # DOWN-FACING DIAGONALS
+    for row in range(3, 7):  # For rows 3 through 6 inclusive:
+        for column in range(0, 4):  # And for columns 0 through 3 inclusive:
+            if (
+                board[(column, row)]
+                == board[(column + 1, row - 1)]
+                == board[(column + 2, row - 2)]
+                == board[(column + 3, row - 3)]
+            ) and board[
+                (column, row)
+            ] != ".":  # If there is a down-facing diagonal four-in-a-row:
+                return True, board[(column, row)]  # Say so and give the winning checker
+
+    return False, ""
 
 
 # Main Connect-4 function
@@ -224,19 +260,23 @@ def play_connect_four() -> None:
 
     # MAIN GAME
     while not ended:  # While the game has not ended
-        print(str(current_player[1]) + ", you're " + current_player[0])  # Remind player of checker
+        print(str(current_player[1]) + ", you're " + current_player[0] + ".")  # Remind w/ checker
         sleep(2.0)  # Wait 2 seconds
 
         column = 7  # Initialize the variable to for which column to in which to put the checker
 
-        while column not in range(0, 7):  # While the column number is invalid:
+        full_column = False  # Initialize a variable to hold whether there is a full column
+        while column not in range(0, 7) or full_column:  # While invalid column no. or full column:
             try:  # Try to:
+                full_column = False  # Assume there isn't a full column
                 column = int(input("What column do you want to play in? "))  # Get the column no.
                 board = drop_checkers(board, column, current_player[0])  # Drop the checker
             except ValueError:  # If column is not a number:
+                print("Sorry, that column doesn't exist. Please try again.")
                 pass  # Ask for the column number again
             except ColumnFullError:  # If the specified column is full
-                print("Sorry, that column is full!")  # Say so
+                full_column = True  # Make full_column true
+                print("Sorry, that column is full! Please try again.")  # Say so
                 pass  # Ask for the column number again
 
         print_board(board)  # Give the board to the user
@@ -261,11 +301,9 @@ def play_connect_four() -> None:
     else:  # If the game ended in a tie
         print("It's a tie! Well played " + players[0][1] + " and " + players[1][1] + "!")  # Say so
 
-    print("Thank you for playing Connect Four!")  # Thank the users for playing
+    print("\nThank you for playing Connect Four!")  # Thank the users for playing
 
 
-"""
 # PLAY BUTTON
 if __name__ == "__main__":
     play_connect_four()
-"""
