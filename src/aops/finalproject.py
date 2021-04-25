@@ -12,7 +12,7 @@ class ColumnFullError(RuntimeError):
 # Function to gather player data --> DONE!
 def get_player_data() -> tuple[tuple[str, str], tuple[str, str]]:
     """
-    A function that gets the names of the players playing Connect Four and whether they have the X
+    Gets the names of the players playing Connect Four and whether they have the X
     checker or the O checker
 
     Args:
@@ -32,101 +32,153 @@ def get_player_data() -> tuple[tuple[str, str], tuple[str, str]]:
     return ("X", player_x), ("O", player_o)  # Give out the player data
 
 
-# Function to create the Connect-4 board
-def create_board() -> dict[tuple[int, int]: str]:
+# Function to create the Connect-4 board --> DONE!
+def create_board() -> dict[tuple[int, int], str]:
     """
-    Create a dictionary that
+    Create a dictionary that corresponds to a Connect Four board
 
     Args:
-
+        None.
 
     Raises:
-
+        None.
 
     Returns:
-
+        A 36-entry dictionary with each entry having a key (a,b) corresponding to the column (from
+        left to right) and row (from the bottom up) of the space and a value "." denoting an empty
+        space
     """
-    return {(0, 0): 1}
+    board: dict[tuple[int, int], str] = {}  # Create the board dictionary
+
+    for column in range(0, 7):  # For each column:
+        for row in range(0, 7):  # And each row:
+            board[(column, row)] = "."  # Create an empty space
+
+    return board  # Give the empty board out
 
 
-# Function to print a given Connect Four board dictionary
-def print_board(board: dict[tuple[int, int]: str]):
+# Function to print a given Connect Four board dictionary --> DONE!
+def print_board(board: dict[tuple[int, int], str]) -> None:
     """
-
+    Print the given Connect Four board to the console.
 
     Args:
-
+        board: A 36-entry dictionary with entries of the form {(a,b): "C"} corresponding to a
+        Connect Four board
 
     Raises:
-
+        None.
 
     Returns:
+        None.
 
     """
-    print(board)
+    board_string = ""  # Create a string representing the board
+
+    for column in range(0, 7):  # For each column number:
+        board_string += str(column) + "  "  # Add the column numbers
+
+    board_string += "\n"  # Add a new line
+
+    for b in range(6, -1, -1):  # For each row from index 6 to 0 (top to bottom)
+        for a in range(0, 7):  # For each column:
+            board_string += board[(a, b)] + "  "  # Add the respective spot
+        board_string += "\n"  # Add a new line
+
+    print(board_string)  # Give the board string out
 
 
-# Function to drop checkers and update board
+# Function to drop checkers and update board --> DONE!
 def drop_checkers(
-        board: dict[tuple[int, int]: str],
-        column: int,
-        checker: str
-) -> dict[tuple[int, int]: str]:
+    board: dict[tuple[int, int], str], column: int, checker: str
+) -> dict[tuple[int, int], str]:
     """
-
-
+    Simulates dropping a checker in a Connect Four board
     Args:
-        board:
-        column:
-        checker:
+        board: A 36-entry dictionary with entries of the form {(a,b): "C"} corresponding to a
+        Connect Four board
+        column: The column number to put the checker
+        checker: The checker to place; either "X" or "O"
 
     Raises:
-        InvalidColumnError:
-        InvalidCheckerError:
+        ColumnFullError: Raised if the column specified is full
 
     Returns:
-
+        The board dictionary with the checker placed in the designated column
     """
-    board[(column, column)] = checker
+    row = 0  # Start on the bottommost row
+
+    try:  # Try to:
+        while board[(column, row)] != ".":
+            row += 1  # Go up the rows while the space is not free
+    except KeyError:  # If row exceeds 6:
+        raise ColumnFullError  # The column must be full! Report it as so
+
+    board[(column, row)] = checker  # Once the row is found, replace
+
     return board
 
 
 # Function to check for horizontal four-in-a-rows
-def check_horizontals(board: dict[tuple[int, int]: str]) -> tuple[bool, str]:
+def check_horizontals(board: dict[tuple[int, int], str]) -> tuple[bool, str]:
     """
-
+    Checks for horizontal four-in-a-rows in a Connect Four board dictionary.
 
     Args:
-
+        board: A 36-entry dictionary with entries of the form {(a,b): "C"} corresponding to a
+        Connect Four board
 
     Raises:
-
+        None.
 
     Returns:
-
+        A tuple of a bool and a string, in the form (bool, "A"), where "A" represents the checker
+        that lies four-in-a-row horizontally, i.e., the winning checker
     """
-    return False, f"{str(board)}"
+    for column in range(0, 4):  # For columns 0 through 3 inclusive:
+        for row in range(0, 7):  # And for all rows:
+            if (
+                board[(column, row)]
+                == board[(column + 1, row)]
+                == board[(column + 2, row)]
+                == board[(column + 3, row)]
+            ):  # If there is a horizontal four-in-a-row:
+                return True, board[(column, row)]  # Say so and give the winning checker
+
+    return False, ""  # Otherwise, report False and give an empty string
 
 
 # Function to check for vertical four-in-a-rows
-def check_verticals(board: dict[tuple[int, int]: str]) -> tuple[bool, str]:
+def check_verticals(board: dict[tuple[int, int], str]) -> tuple[bool, str]:
     """
-
+    Checks for vertical four-in-a-rows in a Connect Four board dictionary.
 
     Args:
-
+        board: A 36-entry dictionary with entries of the form {(a,b): "C"} corresponding to a
+        Connect Four board
 
     Raises:
-
+        None.
 
     Returns:
-
+        A tuple of a bool and a string, in the form (bool, "A"), where "A" represents the checker
+        that lies four-in-a-row vertically, i.e., the winning checker
     """
-    return False, f"{str(board)}"
+    for row in range(0, 4):  # For rows 0 through 3 inclusive:
+        for column in range(0, 7):  # And for all columns:
+            if (
+                board[(column, row)]
+                == board[(column, row + 1)]
+                == board[(column, row + 2)]
+                == board[(column, row + 3)]
+            ):  # If there is a vertical four-in-a-row:
+                return True, board[(column, row)]  # Say so and give the winning checker
+
+    return False, ""  # Otherwise, report False and give an empty string
 
 
 # Function to check for horizontal four-in-a-rows
-def check_diagonals(board: dict[tuple[int, int]: str]) -> tuple[bool, str]:
+def check_diagonals(board: dict[tuple[int, int], str]) -> tuple[bool, str]:
     """
 
 
@@ -143,7 +195,7 @@ def check_diagonals(board: dict[tuple[int, int]: str]) -> tuple[bool, str]:
 
 
 # Main Connect-4 function
-def play_connect_four():
+def play_connect_four() -> None:
     """
     Plays a game of Connect-4 in a console.
 
@@ -178,12 +230,12 @@ def play_connect_four():
 
         while column not in range(0, 7):  # While the column number is invalid:
             try:  # Try to:
-                column = int(input("What column do you want to play in? "))  # Get the column no. &
+                column = int(input("What column do you want to play in? "))  # Get the column no.
                 board = drop_checkers(board, column, current_player[0])  # Drop the checker
             except ValueError:  # If column is not a number:
                 pass  # Ask for the column number again
             except ColumnFullError:  # If the specified column is full
-                print("Sorry, that column is full!")
+                print("Sorry, that column is full!")  # Say so
                 pass  # Ask for the column number again
 
         print_board(board)  # Give the board to the user
@@ -211,6 +263,8 @@ def play_connect_four():
     print("Thank you for playing Connect Four!")  # Thank the users for playing
 
 
+"""
 # PLAY BUTTON
-if __name__ == '__main__':
+if __name__ == "__main__":
     play_connect_four()
+"""
