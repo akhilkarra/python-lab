@@ -9,3 +9,7 @@ python-lab
 
 .. image:: https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336
     :target: https://timothycrosley.github.io/isort/
+    
+Credits:
+
+This project follows guidelines mentioned in the following repository: johnthagen/python-blueprint
