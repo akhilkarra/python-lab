@@ -11,7 +11,7 @@ python-lab
     :target: https://timothycrosley.github.io/isort/
     
 .. image:: https://mybinder.org/badge_logo.svg
- :target: https://mybinder.org/v2/gh/akhilkarra/python-lab/main
+ :target: https://mybinder.org/v2/gh/akhilkarra/python-lab/master
     
 Credits:
 
