@@ -3,8 +3,8 @@ from src.codility.lesson_1.BinaryGap import solution
 
 
 @pytest.mark.parametrize(
-    "N, expected",
+    "n, expected",
     {(9, 2), (529, 4), (1041, 5)},
 )
-def test_solution(N: int, expected: int) -> None:
-    assert solution(N) == expected
+def test_solution(n: int, expected: int) -> None:
+    assert solution(n) == expected
