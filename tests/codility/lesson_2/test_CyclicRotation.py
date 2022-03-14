@@ -1,3 +1,5 @@
+import typing
+
 import pytest
 from src.codility.lesson_2.CyclicRotation import solution
 
@@ -10,5 +12,5 @@ from src.codility.lesson_2.CyclicRotation import solution
         ([1, 2, 3, 4], 4, [1, 2, 3, 4]),
     ],
 )
-def test_solution(a: list[int], k: int, expected: list[int]) -> None:
+def test_solution(a: typing.List[int], k: int, expected: typing.List[int]) -> None:
     assert solution(a, k) == expected

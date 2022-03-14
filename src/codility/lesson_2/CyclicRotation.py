@@ -3,8 +3,10 @@
 # Codility Developer Training. This solution was my 1st attempt, was drafted in 24 minutes and
 # earned a score of 100%. Changes were made manually and automatically only to improve style.
 
+import typing
 
-def solution(a: list[int], k: int) -> list[int]:
+
+def solution(a: typing.List[int], k: int) -> typing.List[int]:
     """Returns the given array rotated by K units.
 
     Args:
