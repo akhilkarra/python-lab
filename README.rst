@@ -10,9 +10,6 @@ python-lab
 .. image:: https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336
     :target: https://timothycrosley.github.io/isort/
     
-.. image:: https://mybinder.org/badge_logo.svg
- :target: https://mybinder.org/v2/gh/akhilkarra/python-lab/master
-    
 Credits:
 
 This project follows guidelines mentioned in the following repository: johnthagen/python-blueprint
