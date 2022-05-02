@@ -2,6 +2,7 @@
 # The following code is my solution to the BinaryGap Problem from Module 1 in
 # Codility Developer Training. This solution was my 2nd attempt, was drafted in 59 minutes and
 # earned a score of 100%. Changes were made manually and automatically only to improve style.
+# Link to test report: https://app.codility.com/demo/results/trainingKNGRQ2-F2B/
 
 
 def solution(n: int) -> int:
