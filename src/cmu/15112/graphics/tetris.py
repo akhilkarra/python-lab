@@ -1,6 +1,5 @@
-import random
-
 from cmu_cs3_graphics import *
+import random
 
 """
 Each clearing of rows increases the speed of the falling pieces.

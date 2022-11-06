@@ -231,7 +231,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-src/cmu/15112/cmu_graphics/libs/*
-src/cmu/15112/cmu_graphics/meta/*
+src/cmu/15112/graphics/cmu_graphics/libs/*
+src/cmu/15112/graphics/cmu_graphics/meta/*
 
 .vscode/*
