@@ -1,0 +1,17 @@
+src.codility package
+====================
+
+.. automodule:: src.codility
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   src.codility.BinaryGap
+   src.codility.CyclicRotation
+   src.codility.OddOccurrences

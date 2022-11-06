@@ -1,0 +1,7 @@
+src.aops.finalproject module
+============================
+
+.. automodule:: src.aops.finalproject
+   :members:
+   :undoc-members:
+   :show-inheritance:

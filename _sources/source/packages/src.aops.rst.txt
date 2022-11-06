@@ -1,0 +1,24 @@
+src.aops package
+================
+
+.. automodule:: src.aops
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   src.aops.finalproject
+   src.aops.week10
+   src.aops.week2
+   src.aops.week3
+   src.aops.week4
+   src.aops.week5
+   src.aops.week6
+   src.aops.week7
+   src.aops.week8
+   src.aops.week9

@@ -1,0 +1,7 @@
+src.aops.week10 module
+======================
+
+.. automodule:: src.aops.week10
+   :members:
+   :undoc-members:
+   :show-inheritance:

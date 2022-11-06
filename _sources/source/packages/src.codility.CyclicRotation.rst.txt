@@ -1,0 +1,7 @@
+src.codility.CyclicRotation module
+==================================
+
+.. automodule:: src.codility.CyclicRotation
+   :members:
+   :undoc-members:
+   :show-inheritance:

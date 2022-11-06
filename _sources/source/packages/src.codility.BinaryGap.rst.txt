@@ -1,0 +1,7 @@
+src.codility.BinaryGap module
+=============================
+
+.. automodule:: src.codility.BinaryGap
+   :members:
+   :undoc-members:
+   :show-inheritance:

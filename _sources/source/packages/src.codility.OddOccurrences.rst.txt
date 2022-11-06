@@ -1,0 +1,7 @@
+src.codility.OddOccurrences module
+==================================
+
+.. automodule:: src.codility.OddOccurrences
+   :members:
+   :undoc-members:
+   :show-inheritance:
