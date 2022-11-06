@@ -1,7 +1,13 @@
 from typing import Tuple
 
 import pytest
-from src.aops.week9 import eight_letter_words, get_data, largest_4_product_grid, replace_word
+
+from src.aops.week9 import (
+    eight_letter_words,
+    get_data,
+    largest_4_product_grid,
+    replace_word,
+)
 
 
 # Test eight_letter_words to find the numerical answer
@@ -30,7 +36,9 @@ him, and loved him dearly.
         )
     },
 )
-def test_replace_word(filename: str, old_word: str, new_word: str, expected: str) -> None:
+def test_replace_word(
+    filename: str, old_word: str, new_word: str, expected: str
+) -> None:
     assert replace_word(filename, old_word, new_word) == expected
 
 

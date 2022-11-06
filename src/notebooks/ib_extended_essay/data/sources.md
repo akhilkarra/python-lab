@@ -5,7 +5,3 @@
 |[united_states_covid19_cases_deaths_and_testing_by_state.csv](https://covid.cdc.gov/covid-data-tracker/#cases_casesper100klast7days)|7-day infection rates per 100k people in each state|09-06-2021|
 |[covid19_vaccinations_in_the_united_states.csv](https://covid.cdc.gov/covid-data-tracker/#vaccinations_vacc-people-onedose-percent-pop12)|Population that is unvaccinated in each state|09-06-2021|
 |[trends_in_number_of_covid19_vaccinations_in_the_us (1-50).csv](https://covid.cdc.gov/covid-data-tracker/#vaccination-trends)|Daily Vaccine Administration Rates|09-06-2021|
-
-
-
-

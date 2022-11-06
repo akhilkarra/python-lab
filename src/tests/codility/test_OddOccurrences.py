@@ -1,7 +1,8 @@
 import typing
 
-from codility.OddOccurrences import solution
 import pytest
+
+from codility.OddOccurrences import solution
 
 
 @pytest.mark.parametrize(

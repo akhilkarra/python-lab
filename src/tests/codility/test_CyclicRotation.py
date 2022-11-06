@@ -1,7 +1,8 @@
 import typing
 
-from codility.CyclicRotation import solution
 import pytest
+
+from codility.CyclicRotation import solution
 
 
 @pytest.mark.parametrize(

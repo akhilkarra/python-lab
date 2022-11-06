@@ -1,6 +1,7 @@
 from typing import Dict, Tuple
 
 import pytest
+
 from src.aops.finalproject import (
     check_diagonals,
     check_horizontals,
@@ -306,7 +307,9 @@ def test_drop_checkers(
         ],
     ],
 )
-def test_check_horizontals(board: Dict[Tuple[int, int], str], expected: Tuple[bool, str]) -> None:
+def test_check_horizontals(
+    board: Dict[Tuple[int, int], str], expected: Tuple[bool, str]
+) -> None:
     assert check_horizontals(board) == expected
 
 
@@ -424,7 +427,9 @@ def test_check_horizontals(board: Dict[Tuple[int, int], str], expected: Tuple[bo
         ],
     ],
 )
-def test_check_verticals(board: Dict[Tuple[int, int], str], expected: Tuple[bool, str]) -> None:
+def test_check_verticals(
+    board: Dict[Tuple[int, int], str], expected: Tuple[bool, str]
+) -> None:
     assert check_verticals(board) == expected
 
 
@@ -542,5 +547,7 @@ def test_check_verticals(board: Dict[Tuple[int, int], str], expected: Tuple[bool
         ],
     ],
 )
-def test_check_diagonals(board: Dict[Tuple[int, int], str], expected: Tuple[bool, str]) -> None:
+def test_check_diagonals(
+    board: Dict[Tuple[int, int], str], expected: Tuple[bool, str]
+) -> None:
     assert check_diagonals(board) == expected

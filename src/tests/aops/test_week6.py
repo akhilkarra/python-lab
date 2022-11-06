@@ -1,4 +1,5 @@
 import pytest
+
 from src.aops.week6 import count_letters, first_six_digit_triangular, sum_first_n_primes
 
 
@@ -34,6 +35,8 @@ def test_count_letters(text: str, letter: str, expected: int) -> None:
 
 
 # Test sum_of_n_primes
-@pytest.mark.parametrize("n, expected", {(1, 2), (2, 5), (3, 10), (4, 17), (100, 24133)})
+@pytest.mark.parametrize(
+    "n, expected", {(1, 2), (2, 5), (3, 10), (4, 17), (100, 24133)}
+)
 def test_sum_of_n_primes(n: int, expected: int) -> None:
     assert sum_first_n_primes(n) == expected

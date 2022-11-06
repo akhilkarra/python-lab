@@ -1,6 +1,7 @@
 import typing
 
 import pytest
+
 from src.aops.week5 import (
     InputOneError,
     InvalidNonnegativeIntegerError,

@@ -1,6 +1,7 @@
 import typing
 
 import pytest
+
 from src.aops.week10 import (
     count_letters,
     dict_reverse,
@@ -15,9 +16,16 @@ from src.aops.week10 import (
 # Test dict_reverse with given test case
 @pytest.mark.parametrize(
     "input_dict, expected",
-    [({"adam": 80, "betty": 60, "charles": 50}, {80: "adam", 60: "betty", 50: "charles"})],
+    [
+        (
+            {"adam": 80, "betty": 60, "charles": 50},
+            {80: "adam", 60: "betty", 50: "charles"},
+        )
+    ],
 )
-def test_dict_reverse(input_dict: typing.Dict[str, int], expected: typing.Dict[int, str]) -> None:
+def test_dict_reverse(
+    input_dict: typing.Dict[str, int], expected: typing.Dict[int, str]
+) -> None:
     assert dict_reverse(input_dict) == expected
 
 
@@ -38,7 +46,9 @@ def test_dict_reverse(input_dict: typing.Dict[str, int], expected: typing.Dict[i
         )
     ],
 )
-def test_student_averages(grades_txt_filepath: str, expected: typing.Dict[str, int]) -> None:
+def test_student_averages(
+    grades_txt_filepath: str, expected: typing.Dict[str, int]
+) -> None:
     assert student_averages(grades_txt_filepath) == expected
 
 
@@ -102,7 +112,9 @@ him, and loved him dearly.""",
         )
     },
 )
-def test_replace_word(input_string: str, old_word: str, new_word: str, expected: str) -> None:
+def test_replace_word(
+    input_string: str, old_word: str, new_word: str, expected: str
+) -> None:
     assert replace_word(input_string, old_word, new_word) == expected
 
 

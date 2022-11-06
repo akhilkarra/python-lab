@@ -25,4 +25,6 @@ def flip_4_digit(n: int) -> int:
     elif n < 1000 or n > 9999:
         raise InvalidNumberError(f"n is not a 4-digit integer: {n}")
 
-    return 1000 * (n % 10) + 100 * ((n // 10) % 10) + 10 * ((n // 100) % 10) + (n // 1000)
+    return (
+        1000 * (n % 10) + 100 * ((n // 10) % 10) + 10 * ((n // 100) % 10) + (n // 1000)
+    )

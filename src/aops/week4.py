@@ -36,7 +36,9 @@ def convert_to_seconds(hours: int, minutes: int, seconds: int) -> int:
             "Inputs are less than 0."
         )  # Make sure the inputs are all nonnegative
     elif (minutes > 60) or (seconds > 60):
-        raise OutOfBoundsError("Inputs are out of bounds.")  # Make sure that inputs make sense
+        raise OutOfBoundsError(
+            "Inputs are out of bounds."
+        )  # Make sure that inputs make sense
     else:
         return (hours * 3600) + (minutes * 60) + seconds  # 3600s = 1hr , and 60s = 1min
 
@@ -97,7 +99,9 @@ def letter_square(letter: str, size: int) -> str:
         square = ""  # Create a variable for the square, which is just an empty string
 
         for row in range(0, size):  # For each row:
-            square += size * letter + "\n"  # Create the line of letters and add a new line
+            square += (
+                size * letter + "\n"
+            )  # Create the line of letters and add a new line
 
         return square  # Return the completed square string
 
@@ -137,7 +141,9 @@ def compute_mongo_age(
         or currentmonth <= 0
         or currentday <= 0
     ):
-        raise InvalidPositiveIntegerError("All of the inputs must be less than or equal to 0.")
+        raise InvalidPositiveIntegerError(
+            "All of the inputs must be less than or equal to 0."
+        )
     elif birthmonth > 15 or birthday > 26 or currentmonth > 15 or currentday > 26:
         raise OutOfBoundsError(
             "Months should be between 1 and 15 and days should be between 1 and 26."

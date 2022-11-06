@@ -1,4 +1,5 @@
 import pytest
+
 from src.aops.week7 import (
     InvalidCharError,
     english_to_pig_latin,

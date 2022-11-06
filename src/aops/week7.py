@@ -24,8 +24,12 @@ def string_to_non_space_characters(string: str) -> typing.List[str]:
         A list of all characters in string not including spaces
     """
     words = string.lower().split()  # Make the string lowercase and split it into words
-    words_split = [list(word) for word in words]  # Split the words up into lists of letters
-    return [char for word in words_split for char in word]  # Flatten the list and return it
+    words_split = [
+        list(word) for word in words
+    ]  # Split the words up into lists of letters
+    return [
+        char for word in words_split for char in word
+    ]  # Flatten the list and return it
 
 
 # Function to make a list of all characters from a string
@@ -43,8 +47,12 @@ def string_to_characters(string: str) -> typing.List[str]:
         A list of all characters in string
     """
     words = list(string.lower())  # Make the string lowercase and split it into words
-    words_split = [list(word) for word in words]  # Split the words up into lists of letters
-    return [char for word in words_split for char in word]  # Flatten the list and return it
+    words_split = [
+        list(word) for word in words
+    ]  # Split the words up into lists of letters
+    return [
+        char for word in words_split for char in word
+    ]  # Flatten the list and return it
 
 
 # Problem 2
@@ -65,7 +73,9 @@ def remove_letter(string: str, letter: str) -> str:
     if len(letter) != 1:
         raise InvalidCharError()  # Make sure that the letter given is truly a single character
     else:
-        return string.replace(letter, "")  # Replace the letter with nothing, i.e. delete it
+        return string.replace(
+            letter, ""
+        )  # Replace the letter with nothing, i.e. delete it
 
 
 # Problem 3
@@ -108,8 +118,12 @@ def most_common_letter(string: str) -> str:
     Returns:
         A string of the lowercase letter that occurs most commonly in string
     """
-    letters = string_to_non_space_characters(string)  # Extract all characters from string
-    common = max(letters, key=letters.count)  # Return the most common letter from all the letters
+    letters = string_to_non_space_characters(
+        string
+    )  # Extract all characters from string
+    common = max(
+        letters, key=letters.count
+    )  # Return the most common letter from all the letters
     return common
 
 
@@ -137,7 +151,9 @@ def english_to_pig_latin(word: str) -> str:
         word = word[1:]  # remove the first letter from word
 
     if consonants[0].isupper():  # Preserve capitalization
-        return (word + consonants + "ay")[0].upper() + (word + consonants + "ay")[1:].lower()
+        return (word + consonants + "ay")[0].upper() + (word + consonants + "ay")[
+            1:
+        ].lower()
     else:
         return word + consonants + "ay"
 
@@ -164,16 +180,26 @@ def rot13(input_str: str) -> str:
 
     for i in range(len(chars)):  # For each character:
         if 97 <= ord(chars[i]) <= 122:  # If the character is a lowercase letter:
-            letter_order = ord(chars[i]) - 97  # ASCII code of the letters is now 0-25 inclusive
+            letter_order = (
+                ord(chars[i]) - 97
+            )  # ASCII code of the letters is now 0-25 inclusive
 
-            rot13_letter_order = (letter_order + 13) % 26  # Generate code for letter after rot13
+            rot13_letter_order = (
+                letter_order + 13
+            ) % 26  # Generate code for letter after rot13
 
             chars[i] = chr(rot13_letter_order + 97)  # Replace letter after rot13
 
-        elif 65 <= ord(chars[i]) <= 90:  # Else, if the character is an uppercase letter:
-            letter_order = ord(chars[i]) - 65  # ASCII code of the letters is now 0-25 inclusive
+        elif (
+            65 <= ord(chars[i]) <= 90
+        ):  # Else, if the character is an uppercase letter:
+            letter_order = (
+                ord(chars[i]) - 65
+            )  # ASCII code of the letters is now 0-25 inclusive
 
-            rot13_letter_order = (letter_order + 13) % 26  # Generate code for letter after rot13
+            rot13_letter_order = (
+                letter_order + 13
+            ) % 26  # Generate code for letter after rot13
 
             chars[i] = chr(rot13_letter_order + 65)  # Replace letter after rot13
 

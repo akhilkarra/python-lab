@@ -23,7 +23,7 @@ def first_six_digit_triangular() -> int:
     triangular = 0  # Create a variable for the triangular number
     n = 1  # Create a variable with the next positive integer
 
-    while triangular // (10 ** 5) < 1:  # While the triangular is less than six-digits:
+    while triangular // (10**5) < 1:  # While the triangular is less than six-digits:
         triangular += n  # Add n to get the next triangular number
         n += 1  # Increment n
 
@@ -67,7 +67,9 @@ def is_prime(n: int) -> bool:
     """
     ans = True  # Make a default answer of True
 
-    for integer in range(2, math.floor(math.sqrt(n)) + 1):  # For each integer from 2 to sqrt(n),
+    for integer in range(
+        2, math.floor(math.sqrt(n)) + 1
+    ):  # For each integer from 2 to sqrt(n),
         if n % integer == 0:  # If n is divisible by this integer,
             ans = False  # n is not prime
 
@@ -117,7 +119,9 @@ def backgammon_roll() -> int:
     dice_2 = random.randint(1, 6)  # Roll dice 2
 
     if dice_1 == dice_2:  # If a doubles is rolled
-        return 2 * (dice_1 + dice_2)  # Return twice the sum of the numbers shown on the die
+        return 2 * (
+            dice_1 + dice_2
+        )  # Return twice the sum of the numbers shown on the die
     else:
         return dice_1 + dice_2  # Else, return the sum of the numbers shown on the die
 
@@ -141,7 +145,9 @@ def backgammon_race() -> None:
     player = 0  # Create the player for the user
     time.sleep(3)  # Get some suspense going by pausing
 
-    while player < 100:  # While Morgan's score is less than 100 (Alex's case is dealt with below):
+    while (
+        player < 100
+    ):  # While Morgan's score is less than 100 (Alex's case is dealt with below):
         print("\nAlex rolls...")
         alex_roll = backgammon_roll()  # Alex does roll now...
         time.sleep(2)  # Get some suspense going by pausing
@@ -183,12 +189,16 @@ def guessing_game() -> None:
     Returns:
         The full fun guessing game in the console!
     """
-    print("Hey there! It's time for you to have a break and play a guessing game with me!")
+    print(
+        "Hey there! It's time for you to have a break and play a guessing game with me!"
+    )
     time.sleep(2)
 
     print("I'm thinking of a number between 0 and 100.")
     number = random.randint(0, 100)  # The computer now has a number
-    tries = 0  # The computer is very helpful and it is holding the number of tries taken
+    tries = (
+        0  # The computer is very helpful and it is holding the number of tries taken
+    )
     time.sleep(2)
 
     user = int(input("Try your best and guess my number: "))  # Get the user's guess
@@ -204,7 +214,9 @@ def guessing_game() -> None:
         else:
             print("Too low!")
 
-        user = int(input("Try your best and guess my number: "))  # Get the user's guess again
+        user = int(
+            input("Try your best and guess my number: ")
+        )  # Get the user's guess again
 
     print("Well...")
     time.sleep(1)  # Suspense time!

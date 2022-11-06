@@ -74,7 +74,9 @@ def print_board(board: Dict[Tuple[int, int], str]) -> None:
         None.
 
     """
-    board_string = "\n"  # Create a string representing the board, with a newline at the beginning
+    board_string = (
+        "\n"  # Create a string representing the board, with a newline at the beginning
+    )
 
     for column in range(0, 7):  # For each column number:
         board_string += str(column) + "  "  # Add the column numbers
@@ -249,10 +251,14 @@ def play_connect_four() -> None:
     print("Welcome to Connect Four!")  # Introduce the game
     sleep(3.0)  # Wait 3 seconds
 
-    players = get_player_data()  # Learn names, which player has X, and which player has O
+    players = (
+        get_player_data()
+    )  # Learn names, which player has X, and which player has O
     current_player = players[0]  # Let the player with X go first
     winner = False  # Keep track of whether there is a winner or not
-    ended = False  # Create a variable to show True if the game has ended and False if not
+    ended = (
+        False  # Create a variable to show True if the game has ended and False if not
+    )
 
     board = create_board()  # Create the Connect Four board
     print_board(board)  # Print out the empty board
@@ -260,17 +266,27 @@ def play_connect_four() -> None:
 
     # MAIN GAME
     while not ended:  # While the game has not ended
-        print(str(current_player[1]) + ", you're " + current_player[0] + ".")  # Remind w/ checker
+        print(
+            str(current_player[1]) + ", you're " + current_player[0] + "."
+        )  # Remind w/ checker
         sleep(2.0)  # Wait 2 seconds
 
         column = 7  # Initialize the variable to for which column to in which to put the checker
 
-        full_column = False  # Initialize a variable to hold whether there is a full column
-        while column not in range(0, 7) or full_column:  # While invalid column no. or full column:
+        full_column = (
+            False  # Initialize a variable to hold whether there is a full column
+        )
+        while (
+            column not in range(0, 7) or full_column
+        ):  # While invalid column no. or full column:
             try:  # Try to:
                 full_column = False  # Assume there isn't a full column
-                column = int(input("What column do you want to play in? "))  # Get the column no.
-                board = drop_checkers(board, column, current_player[0])  # Drop the checker
+                column = int(
+                    input("What column do you want to play in? ")
+                )  # Get the column no.
+                board = drop_checkers(
+                    board, column, current_player[0]
+                )  # Drop the checker
             except ValueError:  # If column is not a number:
                 print("Sorry, that column doesn't exist. Please try again.")
                 pass  # Ask for the column number again
@@ -283,7 +299,11 @@ def play_connect_four() -> None:
         sleep(3.0)  # Wait 3 seconds for some suspense!
 
         # If there is a four-in-a-row:
-        if check_horizontals(board)[0] or check_verticals(board)[0] or check_diagonals(board)[0]:
+        if (
+            check_horizontals(board)[0]
+            or check_verticals(board)[0]
+            or check_diagonals(board)[0]
+        ):
             ended = True  # The game is over,
             winner = True  # And there is a winner!
         elif "." not in board.values():  # If there are no spaces available
@@ -299,7 +319,9 @@ def play_connect_four() -> None:
     if winner:  # If the current player won:
         print("Congratulations, " + current_player[1] + ", you won!")  # Congratulate
     else:  # If the game ended in a tie
-        print("It's a tie! Well played " + players[0][1] + " and " + players[1][1] + "!")  # Say so
+        print(
+            "It's a tie! Well played " + players[0][1] + " and " + players[1][1] + "!"
+        )  # Say so
 
     print("\nThank you for playing Connect Four!")  # Thank the users for playing
 

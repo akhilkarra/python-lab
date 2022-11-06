@@ -1,4 +1,5 @@
 import pytest
+
 from src.aops.week4 import (
     InvalidNonnegativeIntegerError,
     OutOfBoundsError,
@@ -15,7 +16,9 @@ from src.aops.week4 import (
     "hours, minutes,seconds, expected",
     [(2, 30, 15, 9015)],
 )
-def test_convert_to_seconds(hours: int, minutes: int, seconds: int, expected: int) -> None:
+def test_convert_to_seconds(
+    hours: int, minutes: int, seconds: int, expected: int
+) -> None:
     assert convert_to_seconds(hours, minutes, seconds) == expected
 
 
@@ -74,6 +77,8 @@ def test_compute_mongo_age(
     expected: float,
 ) -> None:
     assert (
-        compute_mongo_age(birthyear, birthmonth, birthday, currentyear, currentmonth, currentday)
+        compute_mongo_age(
+            birthyear, birthmonth, birthday, currentyear, currentmonth, currentday
+        )
         == expected
     )

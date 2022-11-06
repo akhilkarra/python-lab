@@ -1,4 +1,5 @@
 import pytest
+
 from src.aops.week3 import (
     InvalidPositiveIntegerError,
     InvalidWholeNumberError,

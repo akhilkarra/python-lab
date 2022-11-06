@@ -1,5 +1,6 @@
-from aops.week2 import InvalidNumberError, flip_4_digit
 import pytest
+
+from aops.week2 import InvalidNumberError, flip_4_digit
 
 
 @pytest.mark.parametrize(
