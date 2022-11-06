@@ -106,7 +106,9 @@ def q1_1960_imo() -> typing.List[int]:
     """
     answer = []  # Create the answer list
 
-    for n in range(110, 1000, 11):  # Define n to be a three-digit integer divisible by 11
+    for n in range(
+        110, 1000, 11
+    ):  # Define n to be a three-digit integer divisible by 11
         if n // 11 == (n // 100) ** 2 + ((n // 10) % 10) ** 2 + (n % 10) ** 2:
             answer.append(n)  # Find the qualifying integers and put them in the list
 
@@ -157,7 +159,9 @@ def find_three_digit_perfect_number() -> int:
     answer = 0  # Make a variable for the answer
 
     for n in range(100, 1000):  # Define n to be a three digit number
-        if sum_of_proper_divs(n) == n:  # If the single three-digit perfect integer is found,
+        if (
+            sum_of_proper_divs(n) == n
+        ):  # If the single three-digit perfect integer is found,
             answer = n  # This is the number!
 
     return answer
@@ -179,11 +183,13 @@ def find_other_taxicab_number() -> int:
     list_of_sums_of_cubes = []  # Create an initial list
 
     for x in range(1, 23):  # The first 5-digit cube is 22**3 = 10648
-        for y in range(1, x + 1):  # Same reasoning as above; We want every single 4 digit sum
+        for y in range(
+            1, x + 1
+        ):  # Same reasoning as above; We want every single 4 digit sum
             if (
-                1000 <= (x ** 3 + y ** 3) < 10000
+                1000 <= (x**3 + y**3) < 10000
             ):  # If the sum of the cubes is a four digit number,
-                list_of_sums_of_cubes.append(x ** 3 + y ** 3)  # Add it to the list
+                list_of_sums_of_cubes.append(x**3 + y**3)  # Add it to the list
 
     list_of_sums_of_cubes.sort()  # Sort in increasing order
 
@@ -193,6 +199,8 @@ def find_other_taxicab_number() -> int:
         if (
             list_of_sums_of_cubes[i] == list_of_sums_of_cubes[i - 1]
         ):  # If two identical sums of cubes are found,
-            list_of_taxicabs.append(list_of_sums_of_cubes[i])  # Add it as a taxicab number!
+            list_of_taxicabs.append(
+                list_of_sums_of_cubes[i]
+            )  # Add it as a taxicab number!
 
     return list_of_taxicabs[1]  # Return the second 4-digit taxicab number

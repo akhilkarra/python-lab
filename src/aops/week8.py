@@ -36,7 +36,9 @@ def list_add(list1: typing.List[int], list2: typing.List[int]) -> typing.List[in
         added_list: typing.List[int] = []  # Create a new integer for the added list
 
         for i in range(len(list1)):  # For each integer in the lists:
-            added_list.append(list1[i] + list2[i])  # Add the corresponding numbers and insert them
+            added_list.append(
+                list1[i] + list2[i]
+            )  # Add the corresponding numbers and insert them
 
         return added_list
 
@@ -95,19 +97,25 @@ def find_winner(ttt_list: typing.List[str]) -> str:
                     return "O"  # O is the winner
 
         for column in [0, 1, 2]:  # For each column
-            if ttt_list[column] == ttt_list[column + 3] == ttt_list[column + 6]:  # Winner column?
+            if (
+                ttt_list[column] == ttt_list[column + 3] == ttt_list[column + 6]
+            ):  # Winner column?
                 if ttt_list[column] == "X":  # If there are Xs across this column
                     return "X"  # X is the winner
                 elif ttt_list[column] == "O":  # Otherwise
                     return "O"  # O is the winner
 
-        if ttt_list[0] == ttt_list[4] == ttt_list[8]:  # Winner top-left to bottom-right diagonal?
+        if (
+            ttt_list[0] == ttt_list[4] == ttt_list[8]
+        ):  # Winner top-left to bottom-right diagonal?
             if ttt_list[0] == "X":  # If there are Xs across this diagonal
                 return "X"  # X is the winner
             elif ttt_list[0] == "O":  # Otherwise
                 return "O"  # O is the winner
 
-        if ttt_list[2] == ttt_list[4] == ttt_list[6]:  # Winner top-right to bottom-left diagonal?
+        if (
+            ttt_list[2] == ttt_list[4] == ttt_list[6]
+        ):  # Winner top-right to bottom-left diagonal?
             if ttt_list[2] == "X":  # If there are Xs across this diagonal
                 return "X"  # X is the winner
             elif ttt_list[2] == "O":  # Otherwise
@@ -130,7 +138,9 @@ def is_jolly(in_list: typing.List[int]) -> bool:
     Returns:
         True if the items in the list correspond to a jolly jumper sequence, and False if not
     """
-    absolute_differences = list(range(1, len(in_list)))  # All possible absolute differences
+    absolute_differences = list(
+        range(1, len(in_list))
+    )  # All possible absolute differences
 
     for i in range(1, len(in_list)):  # For each element (starting at index 1):
         try:  # Find the absolute difference between elements, remove it from absolute_differences

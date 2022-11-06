@@ -22,7 +22,9 @@ def dict_reverse(input_dict: typing.Dict[str, int]) -> typing.Dict[int, str]:
     output_dict = {}  # Create an output dictionary
 
     for item in input_dict:  # For each item in the input dictionary:
-        output_dict[input_dict[item]] = item  # Let value of input_dict = key of output_dict and VV
+        output_dict[
+            input_dict[item]
+        ] = item  # Let value of input_dict = key of output_dict and VV
 
     return output_dict  # Return the output dictionary
 
@@ -41,16 +43,23 @@ def student_averages(grades_txt_filepath: str) -> typing.Dict[str, float]:
     Returns:
         A dictionary with each student's name and their average score
     """
-    tally: typing.Dict[str, typing.List[float]] = {}  # Create dict to hold names, total, tests
+    tally: typing.Dict[
+        str, typing.List[float]
+    ] = {}  # Create dict to hold names, total, tests
 
     grades_file = open(grades_txt_filepath, "r")  # Open the grades.txt file to read
 
     for line in grades_file:  # For each line in the grades.txt file
         if line.split()[0] in tally:  # If the name already exists in the dictionary:
-            tally[line.split()[0]][0] += int(line.split()[1])  # Add the new grade to the total
+            tally[line.split()[0]][0] += int(
+                line.split()[1]
+            )  # Add the new grade to the total
             tally[line.split()[0]][1] += 1  # Add a new test
         else:  # Otherwise:
-            tally[line.split()[0]] = [int(line.split()[1]), 1]  # Create [total, number of tests]
+            tally[line.split()[0]] = [
+                int(line.split()[1]),
+                1,
+            ]  # Create [total, number of tests]
 
     grades_file.close()  # Close the grades.txt file
 
@@ -76,7 +85,10 @@ def highest_scoring_scrabble_word(wordlist_path: str) -> str:
     Returns:
         String of the word with the highest-scoring Scrabble word
     """
-    highest_score: typing.Tuple[int, str] = (0, "")  # Create a tuple to store highest score & word
+    highest_score: typing.Tuple[int, str] = (
+        0,
+        "",
+    )  # Create a tuple to store highest score & word
     values = {
         "A": 1,
         "B": 3,
@@ -113,10 +125,17 @@ def highest_scoring_scrabble_word(wordlist_path: str) -> str:
         score = 0  # Initialize the variable for the Scrabble score of the word
 
         for char in list(word.upper()):  # For each character in the uppercase word:
-            score += values[char]  # Add the value of the character to the Scrabble score
+            score += values[
+                char
+            ]  # Add the value of the character to the Scrabble score
 
-        if score > highest_score[0]:  # If the current score is greater than the highest score:
-            highest_score = (score, word)  # Make it the new highest score with the word itself
+        if (
+            score > highest_score[0]
+        ):  # If the current score is greater than the highest score:
+            highest_score = (
+                score,
+                word,
+            )  # Make it the new highest score with the word itself
 
     wordlist.close()  # Close the wordlist file
 
@@ -138,12 +157,20 @@ def count_letters(input_string: str) -> str:
         A string with each line giving a letter in input_string and its frequency in alphabetical
         order.
     """
-    input_string = input_string.lower().replace(" ", "")  # Lowercase input, remove all spaces
+    input_string = input_string.lower().replace(
+        " ", ""
+    )  # Lowercase input, remove all spaces
     for punctuation in ".,;?!":  # For all punctuation marks:
-        if punctuation in input_string:  # If the input string contains this punctuation mark:
-            input_string = input_string.replace(punctuation, "")  # Delete all instances of it
+        if (
+            punctuation in input_string
+        ):  # If the input string contains this punctuation mark:
+            input_string = input_string.replace(
+                punctuation, ""
+            )  # Delete all instances of it
 
-    letters: typing.Dict[str, int] = {}  # Create a dictionary to hold a count of all letters
+    letters: typing.Dict[
+        str, int
+    ] = {}  # Create a dictionary to hold a count of all letters
     letter_count = ""  # Create an empty string to hold the letter count in string form
 
     for letter in input_string:  # For letter in the processed input string
@@ -155,8 +182,14 @@ def count_letters(input_string: str) -> str:
     letters_keys_list = list(letters.keys())  # Create a list of all the keys of letters
     letters_keys_list.sort()  # Sort this list in alphabetical order
 
-    for letter in letters_keys_list:  # For each letter in the alphabetical list of letters' keys:
-        letter_count += letter + ": " + str(letters[letter]) + "\n"  # Put the count in the string
+    for (
+        letter
+    ) in (
+        letters_keys_list
+    ):  # For each letter in the alphabetical list of letters' keys:
+        letter_count += (
+            letter + ": " + str(letters[letter]) + "\n"
+        )  # Put the count in the string
 
     return letter_count  # Return the letter count string
 
@@ -192,7 +225,9 @@ def replace_word(input_string: str, old_word: str, new_word: str) -> str:
     return " ".join(words)  # Join the list of words together and return this
 
 
-def translation_dictionary(dict_file_name: str, separator: str) -> typing.Dict[str, str]:
+def translation_dictionary(
+    dict_file_name: str, separator: str
+) -> typing.Dict[str, str]:
     """
     Reads a dictionary file and returns a dictionary containing the original word as the key and
     the translated word as the value. The dictionary file is made such that each line contains the
@@ -209,12 +244,16 @@ def translation_dictionary(dict_file_name: str, separator: str) -> typing.Dict[s
     Returns:
         A dictionary such that the key is the original word
     """
-    reference: typing.Dict[str, str] = {}  # Create a reference dictionary for translation
+    reference: typing.Dict[
+        str, str
+    ] = {}  # Create a reference dictionary for translation
 
     dict_file = open(dict_file_name, "r")  # Open the dictionary file
 
     for line in dict_file:  # For each line in the dictionary file:
-        words = line.strip("\n").split(separator)  # Split the line into a list of two words
+        words = line.strip("\n").split(
+            separator
+        )  # Split the line into a list of two words
         reference[words[0]] = words[1]  # Make an entry with {original: translation}
 
     dict_file.close()  # Close the dictionary file
@@ -237,14 +276,20 @@ def translator(dict_file_name: str, text_file_name: str) -> str:
     Returns:
         A string containing the full translation of the input file
     """
-    eng_to_pirate = translation_dictionary(dict_file_name, "|")  # Create a translation dictionary
+    eng_to_pirate = translation_dictionary(
+        dict_file_name, "|"
+    )  # Create a translation dictionary
     translation = ""  # Create a variable for the end translation in a string
 
     original_text = open(text_file_name, "r")  # Open the original text to read
 
     for line in original_text:  # For each line in the original text:
-        for original in eng_to_pirate:  # For each of the original words in the dictionary:
-            line = replace_word(line.lower(), original, eng_to_pirate[original])  # Translate!
+        for (
+            original
+        ) in eng_to_pirate:  # For each of the original words in the dictionary:
+            line = replace_word(
+                line.lower(), original, eng_to_pirate[original]
+            )  # Translate!
         translation += line + "\n"  # Add it to the translation string
 
     original_text.close()  # Close the original text

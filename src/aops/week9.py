@@ -2,9 +2,9 @@
 # Week 9
 # Author: rt24-p (536532)
 
+import typing
 from math import floor
 from statistics import mean
-import typing
 
 
 # Problem 2
@@ -24,7 +24,9 @@ def eight_letter_words(wordlist_path: str) -> int:
     count = 0  # Create a counter for the number of eight-letter words
 
     for line in wordlist:  # For each line in the wordlist:
-        if len(line.strip("\n")) == 8:  # Each line has one word, so if the length of line is 8:
+        if (
+            len(line.strip("\n")) == 8
+        ):  # Each line has one word, so if the length of line is 8:
             count += 1  # Increment the counter
 
     wordlist.close()  # Close wordlist.txt
@@ -59,11 +61,17 @@ def replace_word(filename: str, old_word: str, new_word: str) -> str:
                 words[i] = new_word  # Replace old_word with new_word
 
         for punctuation in ",.!?/":  # Given all possible punctuation marks:
-            for i, word in enumerate(words):  # Given the index and word in the words list:
-                if word == old_word + punctuation:  # Check for old_word with punctuation
+            for i, word in enumerate(
+                words
+            ):  # Given the index and word in the words list:
+                if (
+                    word == old_word + punctuation
+                ):  # Check for old_word with punctuation
                     words[i] = new_word + punctuation  # Replace old_word with new_word
 
-        new_contents += " ".join(words) + "\n"  # Join the list together put it in new_contents
+        new_contents += (
+            " ".join(words) + "\n"
+        )  # Join the list together put it in new_contents
 
     file.close()
 
@@ -92,7 +100,9 @@ def get_data(filename: str) -> typing.Tuple[int, int, int]:
 
     for line in file:  # For each line of the file
         lines += 1  # Increment the line counter
-        words += len(line.split())  # Count the number of words in the line and add it to words
+        words += len(
+            line.split()
+        )  # Count the number of words in the line and add it to words
         chars += len(line)  # Count the number of characters in the line
 
     file.close()  # Close the file
@@ -120,7 +130,9 @@ def largest_4_product_grid(filename: str) -> int:
     grid_file = open(filename, "r")  # Open the grid file to read
 
     for line in grid_file:  # For each line in the grid
-        grid.append(list(map(int, line.split())))  # Append the list of numbers in the line to grid
+        grid.append(
+            list(map(int, line.split()))
+        )  # Append the list of numbers in the line to grid
 
     grid_file.close()  # Close the grid file
 
@@ -128,13 +140,23 @@ def largest_4_product_grid(filename: str) -> int:
 
     for r in range(len(grid)):  # Check for greatest product horizontally
         for c in range(len(grid) - 4):
-            if grid[r][c] * grid[r][c + 1] * grid[r][c + 2] * grid[r][c + 3] > largest_product:
-                largest_product = grid[r][c] * grid[r][c + 1] * grid[r][c + 2] * grid[r][c + 3]
+            if (
+                grid[r][c] * grid[r][c + 1] * grid[r][c + 2] * grid[r][c + 3]
+                > largest_product
+            ):
+                largest_product = (
+                    grid[r][c] * grid[r][c + 1] * grid[r][c + 2] * grid[r][c + 3]
+                )
 
     for c in range(len(grid)):  # Check for greatest product vertically
         for r in range(len(grid) - 4):
-            if grid[r][c] * grid[r + 1][c] * grid[r + 2][c] * grid[r + 3][c] > largest_product:
-                largest_product = grid[r][c] * grid[r + 1][c] * grid[r + 2][c] * grid[r + 3][c]
+            if (
+                grid[r][c] * grid[r + 1][c] * grid[r + 2][c] * grid[r + 3][c]
+                > largest_product
+            ):
+                largest_product = (
+                    grid[r][c] * grid[r + 1][c] * grid[r + 2][c] * grid[r + 3][c]
+                )
 
     return largest_product  # Return the largest product found to the user
 
@@ -156,10 +178,16 @@ def classscores(classgrades_path: str) -> None:
         None.
     """
     in_file = open(classgrades_path, "r")  # Open the classgrades.txt file for reading
-    pupils_scores = [line.split() for line in in_file.readlines()]  # Student scores lists
+    pupils_scores = [
+        line.split() for line in in_file.readlines()
+    ]  # Student scores lists
     in_file.close()  # Close classgrades.txt
 
     out_file = open("classscores.txt", "w")  # Create classscores.txt
-    for pupil in pupils_scores:  # Write out the average of each pupil's grades rounded down
-        out_file.write(pupil[0] + " " + str(int(floor(mean(list(map(int, pupil[1:])))))) + "\n")
+    for (
+        pupil
+    ) in pupils_scores:  # Write out the average of each pupil's grades rounded down
+        out_file.write(
+            pupil[0] + " " + str(int(floor(mean(list(map(int, pupil[1:])))))) + "\n"
+        )
     out_file.close()  # Close classscores.txt

@@ -19,7 +19,9 @@ def solution(n: int) -> int:
 
     largest_gap = 0  # Variable to store the current largest gap between 1s seen so far
     current_gap = 0  # Variable keeping track of the current gap between 1s
-    in_gap = False  # Variable keeping track of whether we are currently looking at a gap
+    in_gap = (
+        False  # Variable keeping track of whether we are currently looking at a gap
+    )
 
     # Iterate through the entire binary representation of N
     while n > 0:
@@ -38,7 +40,9 @@ def solution(n: int) -> int:
 
             else:  # But if the right-most digit is a 1, we have finished a gap.
                 if current_gap > largest_gap:
-                    largest_gap = current_gap  # Update the largest gap found accordingly
+                    largest_gap = (
+                        current_gap  # Update the largest gap found accordingly
+                    )
                 current_gap = 0  # We are now looking for a new gap
                 n = n // 2  # Go to the next bit
 
