@@ -8,7 +8,11 @@
   "python.terminal.launchArgs": ["-i"],
   "python.linting.pylintEnabled": false,
 
-  "editor.quickSuggestions": false,
+  "editor.quickSuggestions": {
+    "comments": "off",
+    "strings": "off",
+    "other": "off"
+},
   "editor.acceptSuggestionOnEnter": "off",
   "editor.quickSuggestionsDelay": 10,
   "editor.wordBasedSuggestions": false,
@@ -25,5 +29,5 @@
           ]
       }
   ],
+  "python.analysis.typeCheckingMode": "basic",
 }
-
