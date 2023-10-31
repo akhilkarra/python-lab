@@ -2,7 +2,7 @@ import typing
 
 import pytest
 
-from codility.CyclicRotation import solution
+from src.codility.CyclicRotation import solution
 
 
 @pytest.mark.parametrize(

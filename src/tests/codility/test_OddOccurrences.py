@@ -2,7 +2,7 @@ import typing
 
 import pytest
 
-from codility.OddOccurrences import solution
+from src.codility.OddOccurrences import solution
 
 
 @pytest.mark.parametrize(

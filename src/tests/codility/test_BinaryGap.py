@@ -1,6 +1,6 @@
 import pytest
 
-from codility.BinaryGap import solution
+from src.codility.BinaryGap import solution
 
 
 @pytest.mark.parametrize(
