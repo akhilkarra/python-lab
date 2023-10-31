@@ -2132,7 +2132,7 @@ def RGBListAlmostEqual(v1, v2, epsilon):
         if isinstance(v1[i], RGB):
             if not RGBAlmostEqual(v1[i], v2[i], epsilon):
                 return False
-        elif isinstance(v1[i], list) or isinstance(v[i], tuple):
+        elif isinstance(v1[i], list) or isinstance(v1[i], tuple):
             if not RGBListAlmostEqual(v1[i], v2[i], epsilon):
                 return False
         else:
