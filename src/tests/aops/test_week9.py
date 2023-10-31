@@ -24,7 +24,7 @@ def test_eight_letter_words(wordlist_path: str, expected: int) -> None:
     "filename, old_word, new_word, expected",
     {
         (
-            "tests/aops/test_files/dorothy.txt",
+            "src/tests/aops/test_files/dorothy.txt",
             "Toto",
             "Gizmo",
             """It was Gizmo that made Dorothy laugh, and saved her from growing as gray as
