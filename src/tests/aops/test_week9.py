@@ -13,7 +13,7 @@ from src.aops.week9 import (
 # Test eight_letter_words to find the numerical answer
 @pytest.mark.parametrize(
     "wordlist_path, expected",
-    {("tests/aops/test_files/wordlist.txt", 28416)},
+    {("src/tests/aops/test_files/wordlist.txt", 28416)},
 )
 def test_eight_letter_words(wordlist_path: str, expected: int) -> None:
     assert eight_letter_words(wordlist_path) == expected
@@ -45,7 +45,7 @@ def test_replace_word(
 # Test get_data with given test case
 @pytest.mark.parametrize(
     "filename, expected",
-    {("tests/aops/test_files/alice.txt", (4, 52, 262))},
+    {("src/tests/aops/test_files/alice.txt", (4, 52, 262))},
 )
 def test_get_data(filename: str, expected: Tuple[int, int, int]) -> None:
     assert get_data(filename) == expected
@@ -54,7 +54,7 @@ def test_get_data(filename: str, expected: Tuple[int, int, int]) -> None:
 # Test largest_4_product_grid using the grid file
 @pytest.mark.parametrize(
     "filename, expected",
-    {("tests/aops/test_files/projecteuler_grid.txt", 51267216)},
+    {("src/tests/aops/test_files/projecteuler_grid.txt", 51267216)},
 )
 def test_largest_4_product_grid(filename: str, expected: int) -> None:
     assert largest_4_product_grid(filename) == expected

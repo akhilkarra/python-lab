@@ -34,7 +34,7 @@ def test_dict_reverse(
     "grades_txt_filepath, expected",
     [
         (
-            "tests/aops/test_files/grades.txt",
+            "src/tests/aops/test_files/grades.txt",
             {
                 "Gilliam": 78.75,
                 "Jones": 83.0,
@@ -54,7 +54,7 @@ def test_student_averages(
 
 # Test highest_scoring_scrabble_word given wordlist.txt and answer to Problem 4
 @pytest.mark.parametrize(
-    "wordlist_path, expected", {("tests/aops/test_files/wordlist.txt", "razzamatazzes")}
+    "wordlist_path, expected", {("src/tests/aops/test_files/wordlist.txt", "razzamatazzes")}
 )
 def test_highest_scoring_scrabble_word(wordlist_path: str, expected: str) -> None:
     assert highest_scoring_scrabble_word(wordlist_path) == expected
@@ -123,7 +123,7 @@ def test_replace_word(
     "dict_file_name, separator, expected",
     [
         (
-            "tests/aops/test_files/pirateWords.txt",
+            "src/tests/aops/test_files/pirateWords.txt",
             "|",
             {
                 "hello": "avast",
@@ -146,8 +146,8 @@ def test_translation_dictionary(
     "dict_file_name, text_file_name, expected",
     {
         (
-            "tests/aops/test_files/pirateWords.txt",
-            "tests/aops/test_files/myInput.txt",
+            "src/tests/aops/test_files/pirateWords.txt",
+            "src/tests/aops/test_files/myInput.txt",
             """avast i have come to swipe ye filthy lucre
 ye filthy lucre or ye life""",
         )
