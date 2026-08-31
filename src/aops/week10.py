@@ -22,9 +22,9 @@ def dict_reverse(input_dict: typing.Dict[str, int]) -> typing.Dict[int, str]:
     output_dict = {}  # Create an output dictionary
 
     for item in input_dict:  # For each item in the input dictionary:
-        output_dict[
-            input_dict[item]
-        ] = item  # Let value of input_dict = key of output_dict and VV
+        output_dict[input_dict[item]] = (
+            item  # Let value of input_dict = key of output_dict and VV
+        )
 
     return output_dict  # Return the output dictionary
 
@@ -43,9 +43,9 @@ def student_averages(grades_txt_filepath: str) -> typing.Dict[str, float]:
     Returns:
         A dictionary with each student's name and their average score
     """
-    tally: typing.Dict[
-        str, typing.List[float]
-    ] = {}  # Create dict to hold names, total, tests
+    tally: typing.Dict[str, typing.List[float]] = (
+        {}
+    )  # Create dict to hold names, total, tests
 
     grades_file = open(grades_txt_filepath, "r")  # Open the grades.txt file to read
 
@@ -168,9 +168,9 @@ def count_letters(input_string: str) -> str:
                 punctuation, ""
             )  # Delete all instances of it
 
-    letters: typing.Dict[
-        str, int
-    ] = {}  # Create a dictionary to hold a count of all letters
+    letters: typing.Dict[str, int] = (
+        {}
+    )  # Create a dictionary to hold a count of all letters
     letter_count = ""  # Create an empty string to hold the letter count in string form
 
     for letter in input_string:  # For letter in the processed input string
@@ -244,9 +244,9 @@ def translation_dictionary(
     Returns:
         A dictionary such that the key is the original word
     """
-    reference: typing.Dict[
-        str, str
-    ] = {}  # Create a reference dictionary for translation
+    reference: typing.Dict[str, str] = (
+        {}
+    )  # Create a reference dictionary for translation
 
     dict_file = open(dict_file_name, "r")  # Open the dictionary file
 
