@@ -60,15 +60,13 @@ def print_board(ttt_list: typing.List[str]) -> None:
     if len(ttt_list) != 9:
         raise InvalidListError  # Make sure the list is a string list of exactly 9 elements
     else:
-        print(
-            f"""
+        print(f"""
         {ttt_list[0]}|{ttt_list[1]}|{ttt_list[2]}
         -+-+-
         {ttt_list[3]}|{ttt_list[4]}|{ttt_list[5]}
         -+-+-
         {ttt_list[6]}|{ttt_list[7]}|{ttt_list[8]}
-        """
-        )  # Create the board
+        """)  # Create the board
 
 
 # Problem 3b
