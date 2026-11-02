@@ -26,7 +26,6 @@ sys.path.insert(0, REPO_DIRECTORY)
 
 from src import __meta__ as meta  # noqa: E402 isort:skip
 
-
 # -- Project information -----------------------------------------------------
 
 now = datetime.datetime.now()
