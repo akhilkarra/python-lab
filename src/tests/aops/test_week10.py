@@ -54,7 +54,8 @@ def test_student_averages(
 
 # Test highest_scoring_scrabble_word given wordlist.txt and answer to Problem 4
 @pytest.mark.parametrize(
-    "wordlist_path, expected", {("src/tests/aops/test_files/wordlist.txt", "razzamatazzes")}
+    "wordlist_path, expected",
+    {("src/tests/aops/test_files/wordlist.txt", "razzamatazzes")},
 )
 def test_highest_scoring_scrabble_word(wordlist_path: str, expected: str) -> None:
     assert highest_scoring_scrabble_word(wordlist_path) == expected
